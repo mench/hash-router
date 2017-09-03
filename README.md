@@ -4,13 +4,13 @@ Javascript and Typescript hash routing library.
 ## Installation
 
 ```sh
-$ npm install --save hash-router
+$ npm install --save browser-hash-router
 ```
 
 ###Basic Usage
 
 ```typescript
-import {Router} from 'hash-router';
+import {Router} from 'browser-hash-router';
 
 //example.com/#users/123456
 Router.route('users/:id',id=>{
