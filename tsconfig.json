@@ -6,6 +6,7 @@
     "preserveConstEnums": true,
     "sourceMap": true,
     "declaration" : true,
+    "outDir": "lib",
     "target" : "es5",
     "lib" : ["es2015","dom"],
     "experimentalDecorators": true,

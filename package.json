@@ -1,11 +1,11 @@
 {
   "name": "browser-hash-router",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Javascript and Typescript hash routing library",
-  "main": "index.js",
-  "types": "index.d.ts",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "scripts": {
-    "bundle": "tsc-bundle src/index.ts index.js"
+
   },
   "repository": {
     "type": "git",
