@@ -1,5 +1,5 @@
 {
-  "name": "hash-router",
+  "name": "browser-hash-router",
   "version": "1.0.0",
   "description": "Javascript and Typescript hash routing library",
   "main": "index.js",
