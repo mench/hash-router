@@ -1,4 +1,4 @@
-declare module "index" {
+declare module "browser-hash-router" {
     export class Emitter {
         on(event: string, handler: Function, options?: any): void;
         once(event: string, handler: Function, options?: any): void;

@@ -1,6 +1,6 @@
 {
   "name": "browser-hash-router",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Javascript and Typescript hash routing library",
   "main": "index.js",
   "types": "index.d.ts",
