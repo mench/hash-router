@@ -1,0 +1,14 @@
+.DS_*
+node_modules
+*.idea/*
+*.iml
+out
+.DS_Store
+*.log
+*.pid
+*.seed
+*.ipr
+*.iws
+src/test
+store/*
+lib/test

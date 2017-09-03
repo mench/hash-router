@@ -1,0 +1,20 @@
+{
+  "name": "hash-router",
+  "version": "1.0.0",
+  "description": "Javascript and Typescript hash routing library",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "scripts": {
+    "bundle": "tsc-bundle src/index.ts index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mench/hash-router.git"
+  },
+  "author": "Armen Harutyunyan <mench.harutyunyan@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mench/hash-router/issues"
+  },
+  "homepage": "https://github.com/mench/hash-router#readme"
+}
