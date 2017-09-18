@@ -1,8 +1,8 @@
 export declare class Emitter {
-    on(event: string, handler: Function, options?: any): void;
-    once(event: string, handler: Function, options?: any): void;
-    off(event?: string, handler?: Function): void;
-    emit(event: string, ...args: any[]): any[];
+    private _callbacks;
+    on(event: any, fn: any): this;
+    emit(event: any, ...args: any[]): this;
+    off(event: any, fn?: any): this;
 }
 export declare class Route {
     private regex;

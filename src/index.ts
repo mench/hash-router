@@ -1,67 +1,47 @@
-const EVENTS:symbol = Symbol('events');
-const LISTENER:symbol = Symbol('listener');
-
 export class Emitter {
-    public on(event:string,handler:Function,options:any={}):void{
-        let events = this[EVENTS];
-        if(!events){
-            events = this[EVENTS] = Object.create(null);
+    private _callbacks;
+    on(event:string, fn:Function) {
+        this._callbacks = this._callbacks || {};
+        if (!this._callbacks[event]) {
+            this._callbacks[event] = [];
         }
-        let listeners = events[event];
-        if(!listeners){
-            events[event] = [handler];
-        }else{
-            listeners.push(handler);
-        }
-        handler[LISTENER]=options;
+        this._callbacks[event].push(fn);
+        return this;
     }
-    public once(event: string, handler:Function,options:any={}):void{
-        options.once = true;
-        this.on(event,handler,options);
-    }
-    public off(event?:string,handler?:Function):void{
-        let events = this[EVENTS];
-        if(events){
-            if(!handler){
-                delete events[event];
-                return;
-            }
-            let listeners = events[event];
-            if(listeners){
-                events[event] = listeners = listeners.filter(l=>{
-                    if(handler==l){
-                        delete handler[LISTENER];
-                        return false;
-                    }else{
-                        return true;
-                    }
-                });
-                if(listeners.length==0){
-                    delete events[event];
-                }
-            }
-        }else{
-            delete this[EVENTS];
-        }
-    }
-    public emit(event:string,...args:any[]):any[]{
-        let events = this[EVENTS];
-        if(events){
-            let listeners = events[event];
-            if(listeners){
-                return listeners.map(l=>{
-                    let options = l[LISTENER];
-                    if(options){
-                        if(options.once){
-                            this.off(event,l);
-                        }
-                        return l.apply(options.target,args);
-                    }else{
-                        return l.apply(void 0,args);
-                    }
-                });
+    emit(event:string,...args){
+        let callback, callbacks, _i, _len;
+        this._callbacks = this._callbacks || {};
+        callbacks = this._callbacks[event];
+        if (callbacks) {
+            for (_i = 0, _len = callbacks.length; _i < _len; _i++) {
+                callback = callbacks[_i];
+                callback.apply(this, args);
             }
         }
+        return this;
+    }
+    off(event, fn?) {
+        let callback, callbacks, i, _i, _len;
+        if (!this._callbacks || arguments.length === 0) {
+            this._callbacks = {};
+            return this;
+        }
+        callbacks = this._callbacks[event];
+        if (!callbacks) {
+            return this;
+        }
+        if (arguments.length === 1) {
+            delete this._callbacks[event];
+            return this;
+        }
+        for (i = _i = 0, _len = callbacks.length; _i < _len; i = ++_i) {
+            callback = callbacks[i];
+            if (callback === fn) {
+                callbacks.splice(i, 1);
+                break;
+            }
+        }
+        return this;
     }
 }
 
