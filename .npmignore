@@ -10,5 +10,5 @@ out
 *.seed
 *.ipr
 *.iws
-src/test
+src
 lib/test
